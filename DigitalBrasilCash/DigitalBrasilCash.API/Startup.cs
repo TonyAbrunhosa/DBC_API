@@ -1,40 +1,45 @@
+using DigitalBrasilCash.API.Configurations;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
+
 
 namespace DigitalBrasilCash.API
 {
     public class Startup
-    {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+    {        
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ResolveDependencyInjection();
+            services.ResolveCors();
+            services.AddAuthenticationBearer();
+            services.AddSwagger("RSauto.Api", "v1");
+            services.AddCompression();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            }).AddFluentValidation();
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
+            else
+                app.UseHsts();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "RSauto.Api v1"); });
             app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            app.UseCors(Cors.origins);
+            app.UseHttpsRedirection();
+            app.UseResponseCompression();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }
