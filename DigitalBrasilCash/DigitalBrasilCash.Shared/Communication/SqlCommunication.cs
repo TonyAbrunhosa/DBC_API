@@ -21,7 +21,7 @@ namespace DigitalBrasilCash.Shared.Communication
 
         public async Task<T> QueryFirstOrDefaultAsyncDapper<T>(string sqlStr, object param = null, int timeout = 900) where T : new()
         {
-            var ConnectionString = _configuration.ConnectionStrings("RSautoDb");
+            var ConnectionString = _configuration.ConnectionStrings("ConnectionString");
 
             if (!string.IsNullOrEmpty(ConnectionString))
                 using (var Conn = new SqlConnection(ConnectionString))
@@ -35,7 +35,7 @@ namespace DigitalBrasilCash.Shared.Communication
         }
         public async Task<IEnumerable<T>> QueryAsyncDapper<T>(string sqlStr, object param = null, int timeout = 900) where T : new()
         {
-            var ConnectionString = _configuration.ConnectionStrings("RSautoDb");
+            var ConnectionString = _configuration.ConnectionStrings("ConnectionString");
 
             if (!string.IsNullOrEmpty(ConnectionString))
                 using (var Conn = new SqlConnection(ConnectionString))
@@ -49,7 +49,7 @@ namespace DigitalBrasilCash.Shared.Communication
 
         public async Task<int> InsertAsyncDapper<T>(T obj, int timeout = 900) where T : class
         {
-            var ConnectionString = _configuration.ConnectionStrings("RSautoDb");
+            var ConnectionString = _configuration.ConnectionStrings("ConnectionString");
 
             if (string.IsNullOrEmpty(ConnectionString))
                 _logger.LogInformation("Não foi encontrada a ConnectionString.");
@@ -59,7 +59,7 @@ namespace DigitalBrasilCash.Shared.Communication
         }
         public async Task InsertAsyncDapper<T>(List<T> obj, int timeout = 900) where T : class
         {
-            var ConnectionString = _configuration.ConnectionStrings("RSautoDb");
+            var ConnectionString = _configuration.ConnectionStrings("ConnectionString");
 
             if (!string.IsNullOrEmpty(ConnectionString))
                 using (var Conn = new SqlConnection(ConnectionString))
@@ -72,7 +72,7 @@ namespace DigitalBrasilCash.Shared.Communication
 
         public async Task UpdateAsyncDapper<T>(T obj, int timeout = 900) where T : class
         {
-            var ConnectionString = _configuration.ConnectionStrings("RSautoDb");
+            var ConnectionString = _configuration.ConnectionStrings("ConnectionString");
 
             if (!string.IsNullOrEmpty(ConnectionString))
                 using (var Conn = new SqlConnection(ConnectionString))
@@ -84,7 +84,7 @@ namespace DigitalBrasilCash.Shared.Communication
         }
         public async Task UpdateAsyncDapper<T>(List<T> obj, int timeout = 900) where T : class
         {
-            var ConnectionString = _configuration.ConnectionStrings("RSautoDb");
+            var ConnectionString = _configuration.ConnectionStrings("ConnectionString");
 
             if (!string.IsNullOrEmpty(ConnectionString))
                 using (var Conn = new SqlConnection(ConnectionString))
@@ -97,7 +97,7 @@ namespace DigitalBrasilCash.Shared.Communication
 
         public async Task RemoveAsyncDapper<T>(T obj, int timeout = 900) where T : class
         {
-            var ConnectionString = _configuration.ConnectionStrings("RSautoDb");
+            var ConnectionString = _configuration.ConnectionStrings("ConnectionString");
 
             if (!string.IsNullOrEmpty(ConnectionString))
                 using (var Conn = new SqlConnection(ConnectionString))
@@ -110,7 +110,7 @@ namespace DigitalBrasilCash.Shared.Communication
 
         public async Task ExcuteAsyncDapper(string strSql, object param = null, int timeout = 900)
         {
-            var ConnectionString = _configuration.ConnectionStrings("RSautoDb");
+            var ConnectionString = _configuration.ConnectionStrings("ConnectionString");
 
             if (string.IsNullOrEmpty(ConnectionString))
                 _logger.LogInformation("Não foi encontrada a ConnectionString.");
@@ -120,7 +120,7 @@ namespace DigitalBrasilCash.Shared.Communication
         }
         public string GetConnectionString()
         {
-            return _configuration.ConnectionStrings("RSautoDb");
+            return _configuration.ConnectionStrings("ConnectionString");
         }
     }
 }
