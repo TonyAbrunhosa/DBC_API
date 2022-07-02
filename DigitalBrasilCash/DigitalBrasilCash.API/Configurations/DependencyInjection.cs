@@ -1,4 +1,7 @@
-﻿using DigitalBrasilCash.Domain.Contracts.Repositories;
+﻿using DigitalBrasilCash.Application.Services;
+using DigitalBrasilCash.Domain.Accounts.Validation;
+using DigitalBrasilCash.Domain.Contracts.Repositories;
+using DigitalBrasilCash.Domain.Contracts.Services;
 using DigitalBrasilCash.Domain.Entity;
 using DigitalBrasilCash.Infrastructure.Repositories;
 using DigitalBrasilCash.Shared.Communication;
@@ -17,6 +20,7 @@ namespace DigitalBrasilCash.API.Configurations
 
             ////SERVICES
             //services.AddTransient<ITokenService, TokenService>();
+            services.AddSingleton<IAccountWriteService, AccountWriteService>();
 
             //REPOSITORY
             //services.AddTransient<ITokenRepository, TokenRepository>();
@@ -24,6 +28,9 @@ namespace DigitalBrasilCash.API.Configurations
             services.AddSingleton<IAccountQueryRepository, AccountQueryRepository>();
 
             services.AddTransient<List<AccountEntity>, List<AccountEntity>>();
+
+            // VALIDATORS
+            services.AddSingleton<AccountInputValidate, AccountInputValidate>();
         }
     }
 }

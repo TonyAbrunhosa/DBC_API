@@ -1,6 +1,7 @@
 ﻿using DigitalBrasilCash.Domain.Accounts.Input;
 using DigitalBrasilCash.Shared.Utilities;
 using FluentValidation;
+using System.Text.RegularExpressions;
 
 namespace DigitalBrasilCash.Domain.Accounts.Validation
 {
@@ -19,6 +20,14 @@ namespace DigitalBrasilCash.Domain.Accounts.Validation
                     {
                         context.AddFailure("tax_id", "Informe um documento válido.");
                     }
+                if (!string.IsNullOrEmpty(o.postal_code))
+                {
+                    Regex Rgx = new Regex(@"^\d{5}-\d{3}$");
+
+                    if (!Rgx.IsMatch(o.postal_code))
+                        context.AddFailure("postal_code", "Informe um Cep válido.");
+                
+                }   
             });
         }
     }

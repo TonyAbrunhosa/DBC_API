@@ -8,9 +8,17 @@ namespace DigitalBrasilCash.Domain.Accounts.Output
 {
     public class AddressOutput
     {
-        public string street { get; set; }
-        public string district { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
+        public AddressOutput(string street, string district, string city, string state)
+        {
+            Street = street;
+            District = district;
+            City = city;
+            State = state;
+        }
+
+        public string Street { get; private set; }
+        public string District { get; private set; }
+        public string City { get; private set; }
+        public string State { get; private set; }
     }
 }

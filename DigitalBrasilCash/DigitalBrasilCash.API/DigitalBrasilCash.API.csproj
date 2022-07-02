@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DigitalBrasilCash.Application\DigitalBrasilCash.Application.csproj" />
     <ProjectReference Include="..\DigitalBrasilCash.Domain\DigitalBrasilCash.Domain.csproj" />
     <ProjectReference Include="..\DigitalBrasilCash.Infrastructure\DigitalBrasilCash.Infrastructure.csproj" />
     <ProjectReference Include="..\DigitalBrasilCash.Shared\DigitalBrasilCash.Shared.csproj" />
