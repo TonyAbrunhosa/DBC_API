@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Accounts\Validation\" />
-    <Folder Include="Contracts\Services\" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+    <PackageReference Include="FluentValidation" Version="11.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+    <ProjectReference Include="..\DigitalBrasilCash.Shared\DigitalBrasilCash.Shared.csproj" />
   </ItemGroup>
 
 </Project>

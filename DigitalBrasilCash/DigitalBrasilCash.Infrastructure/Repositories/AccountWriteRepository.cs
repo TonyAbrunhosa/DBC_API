@@ -27,13 +27,12 @@ namespace DigitalBrasilCash.Infrastructure.Repositories
             return await _sql.InsertAsyncDapper(account);
         }
 
-        public async Task<int> NovoLocal(AccountEntity account)
+        public async Task NovoLocal(AccountEntity account)
         {
             _logger.LogInformation("AccountWriteRepository - Metodo: Novo, Inserindo novo registro.");
-            return await Task.Run(() =>
+            await Task.Run(() =>
             {
-                _ListAccountEntities.Add(account);
-                return _ListAccountEntities.Count();
+                _ListAccountEntities.Add(account);                
             });
             
         }

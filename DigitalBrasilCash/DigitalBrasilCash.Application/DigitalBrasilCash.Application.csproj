@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Compile Include="Services\AccountWriteService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DigitalBrasilCash.Domain\DigitalBrasilCash.Domain.csproj" />
   </ItemGroup>
 
 </Project>
