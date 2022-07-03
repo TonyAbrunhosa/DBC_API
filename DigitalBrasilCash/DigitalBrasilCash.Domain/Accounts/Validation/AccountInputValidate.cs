@@ -16,16 +16,15 @@ namespace DigitalBrasilCash.Domain.Accounts.Validation
             RuleFor(x => x).Custom((o, context) =>
             {
                 if (!string.IsNullOrEmpty(o.tax_id))
-                    if (o.tax_id.IsOkCpf())
-                    {
-                        context.AddFailure("tax_id", "Informe um documento válido.");
-                    }
+                    if (!o.tax_id.IsOkCpf())
+                        context.AddFailure("tax_id", "Informe um CPF/CNPJ válido.");
+
                 if (!string.IsNullOrEmpty(o.postal_code))
                 {
-                    Regex Rgx = new Regex(@"^\d{5}-\d{3}$");
+                    Regex Rgx = new Regex(@"^\d{5}-\d{3}$");                    
 
                     if (!Rgx.IsMatch(o.postal_code))
-                        context.AddFailure("postal_code", "Informe um Cep válido.");
+                        context.AddFailure("postal_code", "Informe um Cep válido. Exemplo: 99999-999.");
                 
                 }   
             });

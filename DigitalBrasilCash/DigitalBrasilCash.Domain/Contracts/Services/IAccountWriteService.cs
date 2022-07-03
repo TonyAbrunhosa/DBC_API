@@ -7,6 +7,5 @@ namespace DigitalBrasilCash.Domain.Contracts.Services
     public interface IAccountWriteService
     {
         Task<ICommandResult> Novo(AccountInput input);
-        Task<ICommandResult> NovoLocal(AccountInput input);
     }
 }

@@ -4,6 +4,7 @@ namespace DigitalBrasilCash.Domain.Accounts.Output
 {
     public class AccountOutput
     {
+        public AccountOutput(){}
         public AccountOutput(int id_account, string name, string tax_id, string phone_number, string postal_code, string status, DateTime created_at)
         {
             Id_account = id_account;

@@ -7,6 +7,5 @@ namespace DigitalBrasilCash.Domain.Contracts.Repositories
     public interface IAccountWriteRepository
     {
         Task<int> Novo(AccountEntity account);
-        Task NovoLocal(AccountEntity account);
     }
 }
