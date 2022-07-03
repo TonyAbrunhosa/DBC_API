@@ -17,10 +17,12 @@ namespace DigitalBrasilCash.API.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountWriteService _serviceWrite;
+        private readonly IAccountQueryService _serviceQuery;
 
-        public AccountController(IAccountWriteService serviceWrite)
+        public AccountController(IAccountWriteService serviceWrite, IAccountQueryService serviceQuery)
         {
             _serviceWrite = serviceWrite;
+            _serviceQuery = serviceQuery;
         }
 
         [HttpPost("account")]
@@ -45,6 +47,30 @@ namespace DigitalBrasilCash.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new CommandResult(false, ex.Message + ex.StackTrace));
             }
-        }        
+        }
+        
+        [HttpGet("account/{name: string}/{tax_id: string}/{created_at: DateTime}")]
+        [ProducesResponseType(typeof(AccountOutput), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ICommandResult), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ICommandResult), StatusCodes.Status422UnprocessableEntity)]
+        [ProducesResponseType(typeof(ICommandResult), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Buscar(string name, string tax_id, DateTime created_at)
+        {
+            try
+            {
+                ICommandResult retorno = await _serviceQuery.Buscar(name, tax_id, created_at);
+
+                if (retorno.Sucesso)
+                    return Ok(retorno);
+                else if (!retorno.Sucesso && retorno.Dados != null)
+                    return UnprocessableEntity(retorno);
+                else
+                    return BadRequest(retorno);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new CommandResult(false, ex.Message + ex.StackTrace));
+            }
+        }
     }
 }
