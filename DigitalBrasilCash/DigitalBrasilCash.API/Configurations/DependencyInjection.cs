@@ -19,12 +19,11 @@ namespace DigitalBrasilCash.API.Configurations
             services.AddScoped<SqlCommunication, SqlCommunication>();
 
             ////SERVICES
-            //services.AddTransient<ITokenService, TokenService>();
+            services.AddTransient<ITokenService, TokenService>();
             services.AddTransient<IAccountWriteService, AccountWriteService>();
             services.AddTransient<IAccountQueryService, AccountQueryService>();
 
-            //REPOSITORY
-            //services.AddTransient<ITokenRepository, TokenRepository>();
+            //REPOSITORY            
             services.AddTransient<IAccountWriteRepository, AccountWriteRepository>();
             services.AddTransient<IAccountQueryRepository, AccountQueryRepository>();
 

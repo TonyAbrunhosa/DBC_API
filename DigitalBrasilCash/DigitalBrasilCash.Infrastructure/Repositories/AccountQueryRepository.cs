@@ -21,6 +21,7 @@ namespace DigitalBrasilCash.Infrastructure.Repositories
 
         public async Task<IEnumerable<AccountOutput>> Buscar(string name, string tax_id, DateTime? created_at)
         {
+            _logger.LogInformation("AccountQueryRepository - Metodo: Buscar, buscando registros.");
             return await _sql.QueryAsyncDapper<AccountOutput>(@"
                 BEGIN
                     SELECT 
