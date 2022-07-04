@@ -32,7 +32,7 @@ namespace DigitalBrasilCash.Application.Services
 
             var entity = new AccountEntity(input.name, input.tax_id, input.password, input.phone_number, input.postal_code);
             var id_account = await _accountWriteRepository.Novo(entity);
-            var output = new AccountOutput(id_account, entity.Name, entity.Tax_id, entity.Phone_number, entity.Status, entity.Postal_code, entity.Created_at);
+            var output = new AccountOutput(id_account, entity.Name, entity.Tax_id, entity.Phone_number, entity.Postal_code, entity.Status, entity.Created_at);
 
             if (!string.IsNullOrEmpty(output.Postal_code))
             {

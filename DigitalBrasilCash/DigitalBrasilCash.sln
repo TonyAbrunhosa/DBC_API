@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBrasilCash.API", "DigitalBrasilCash.API\DigitalBrasilCash.API.csproj", "{1D16BE1C-250A-4B32-BA44-37A4C8E3714A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBrasilCash.API", "DigitalBrasilCash.API\DigitalBrasilCash.API.csproj", "{1D16BE1C-250A-4B32-BA44-37A4C8E3714A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBrasilCash.Domain", "DigitalBrasilCash.Domain\DigitalBrasilCash.Domain.csproj", "{AB7F43EF-4A1E-4D21-831E-88291984AA49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBrasilCash.Domain", "DigitalBrasilCash.Domain\DigitalBrasilCash.Domain.csproj", "{AB7F43EF-4A1E-4D21-831E-88291984AA49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBrasilCash.Infrastructure", "DigitalBrasilCash.Infrastructure\DigitalBrasilCash.Infrastructure.csproj", "{F9941361-10CA-409E-9BCC-958F28396CBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBrasilCash.Infrastructure", "DigitalBrasilCash.Infrastructure\DigitalBrasilCash.Infrastructure.csproj", "{F9941361-10CA-409E-9BCC-958F28396CBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBrasilCash.Application", "DigitalBrasilCash.Application\DigitalBrasilCash.Application.csproj", "{CDEA181E-5E27-4F88-91BB-908F005BA1C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBrasilCash.Application", "DigitalBrasilCash.Application\DigitalBrasilCash.Application.csproj", "{CDEA181E-5E27-4F88-91BB-908F005BA1C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalBrasilCash.Shared", "DigitalBrasilCash.Shared\DigitalBrasilCash.Shared.csproj", "{6DA5C2A1-7AE1-4F7F-BDCE-69FA027FA3EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalBrasilCash.Shared", "DigitalBrasilCash.Shared\DigitalBrasilCash.Shared.csproj", "{6DA5C2A1-7AE1-4F7F-BDCE-69FA027FA3EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBrasilCash.API", "TestBrasilCash.API\TestBrasilCash.API.csproj", "{8C0749AE-B5F9-4082-B046-76D2EE0A7847}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6DA5C2A1-7AE1-4F7F-BDCE-69FA027FA3EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DA5C2A1-7AE1-4F7F-BDCE-69FA027FA3EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DA5C2A1-7AE1-4F7F-BDCE-69FA027FA3EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C0749AE-B5F9-4082-B046-76D2EE0A7847}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C0749AE-B5F9-4082-B046-76D2EE0A7847}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C0749AE-B5F9-4082-B046-76D2EE0A7847}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C0749AE-B5F9-4082-B046-76D2EE0A7847}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

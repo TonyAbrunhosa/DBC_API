@@ -16,14 +16,14 @@ namespace DigitalBrasilCash.Domain.Accounts.Validation
             RuleFor(x => x).Custom((o, context) =>
             {
                 if (!string.IsNullOrEmpty(o.tax_id))
-                    if (!o.tax_id.IsOkCpf())
+                    if (!o.tax_id.IsOkCpfCnpj())
                         context.AddFailure("tax_id", "Informe um CPF/CNPJ válido.");
 
                 if (!string.IsNullOrEmpty(o.postal_code))
                 {
                     Regex Rgx = new Regex(@"^\d{8}$");                    
 
-                    if (!Rgx.IsMatch(o.postal_code.Replace("-", "")))
+                    if (!Rgx.IsMatch(o.postal_code.Replace("-", "").Replace(" ", "")))
                         context.AddFailure("postal_code", "Informe um Cep válido. Exemplo: 99999-999.");
                 
                 }
@@ -31,17 +31,17 @@ namespace DigitalBrasilCash.Domain.Accounts.Validation
                 if (!string.IsNullOrEmpty(o.phone_number))
                 {
                     bool error = false;
-                    string postaCode = o.postal_code.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
-                    if (o.phone_number.Length == 11)
+                    string phoneNumber = o.phone_number.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
+                    if (phoneNumber.Length == 11)
                     {
                         Regex Rgx = new Regex(@"^\d{11}$");
-                        if (!Rgx.IsMatch(postaCode))
+                        if (!Rgx.IsMatch(phoneNumber))
                             error = true;
                     }
-                    else if (o.phone_number.Length == 10)
+                    else if (phoneNumber.Length == 10)
                     {
                         Regex Rgx = new Regex(@"^\d{10}$");
-                        if (!Rgx.IsMatch(postaCode))
+                        if (!Rgx.IsMatch(phoneNumber))
                             error = true;
                     }
                     else

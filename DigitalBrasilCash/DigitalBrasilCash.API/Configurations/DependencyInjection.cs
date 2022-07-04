@@ -30,6 +30,7 @@ namespace DigitalBrasilCash.API.Configurations
 
             // VALIDATORS
             services.AddTransient<AccountInputValidate, AccountInputValidate>();
+            services.AddTransient<AccountInputQueryValidate, AccountInputQueryValidate>();            
         }
     }
 }

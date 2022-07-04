@@ -8,13 +8,12 @@ namespace DigitalBrasilCash.Domain.Accounts.Validation
     {
         public AccountInputQueryValidate()
         {
-            RuleFor(x => x.name).NotEmpty().NotNull().WithMessage("Informe o Nome.").MinimumLength(3).MaximumLength(60);
-            RuleFor(x => x.tax_id).NotEmpty().NotNull().WithMessage("Informe o CPF/CNPJ.");            
+            RuleFor(x => x.name).MinimumLength(3).MaximumLength(60);            
 
             RuleFor(x => x).Custom((o, context) =>
             {
                 if (!string.IsNullOrEmpty(o.tax_id))
-                    if (!o.tax_id.IsOkCpf())
+                    if (!o.tax_id.IsOkCpfCnpj())
                         context.AddFailure("tax_id", "Informe um CPF/CNPJ válido.");                             
             });
         }

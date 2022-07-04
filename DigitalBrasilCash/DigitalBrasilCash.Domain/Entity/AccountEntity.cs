@@ -3,7 +3,7 @@ using System;
 
 namespace DigitalBrasilCash.Domain.Entity
 {
-    [Table("Account")]
+    [Table("ACCOUNT")]
     public class AccountEntity
     {
         public AccountEntity(string name, string tax_id, string password, string phone_number, string postal_code, int id_account = 0)
@@ -12,8 +12,8 @@ namespace DigitalBrasilCash.Domain.Entity
             Name = name;
             Tax_id = tax_id;
             Password = password;
-            Phone_number = phone_number;
-            Postal_code = postal_code;
+            Phone_number = phone_number.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
+            Postal_code = postal_code.Replace("-", "").Replace(" ", "");
             Status = string.IsNullOrEmpty(postal_code) ? "pending" : "approved";
             Created_at = DateTime.Now;
         }

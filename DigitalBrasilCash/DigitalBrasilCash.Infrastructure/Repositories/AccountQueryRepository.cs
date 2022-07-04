@@ -28,11 +28,12 @@ namespace DigitalBrasilCash.Infrastructure.Repositories
                         tax_id,
                         phone_number,
                         created_at,
-                        postal_code
+                        postal_code,
+                        status
                     FROM ACCOUNT WITH(NOLOCK)
-                    WHERE (@name = '' OR name = @name)
-                    AND (@tax_id = '' OR tax_id = @tax_id)
-                    AND (@created_at = null OR created_at = @created_at)
+                    WHERE (@name is null OR name = @name)
+                    AND (@tax_id is null OR tax_id = @tax_id)
+                    AND (@created_at is null OR created_at = @created_at)
                 END
             ", new { name = name, tax_id = tax_id, created_at = created_at });
         }        
