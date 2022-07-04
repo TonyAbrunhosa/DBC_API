@@ -25,10 +25,10 @@ namespace DigitalBrasilCash.Shared.Utilities
 
         public string ConnectionStrings(string key)
         {
-            var value = AdmHash.Decrypt(Environment.GetEnvironmentVariable(key));
+            var value = Environment.GetEnvironmentVariable(key);
 
             if (string.IsNullOrEmpty(value))
-                return AdmHash.Decrypt(_config.GetSection(key)?.Value?.ToString() ?? "");
+                return _config.GetSection(key)?.Value?.ToString() ?? "";
 
             return value;
         }

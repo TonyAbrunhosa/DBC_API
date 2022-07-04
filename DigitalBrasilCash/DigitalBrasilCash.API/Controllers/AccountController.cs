@@ -25,7 +25,7 @@ namespace DigitalBrasilCash.API.Controllers
             _serviceQuery = serviceQuery;
         }
 
-        [HttpPost("account")]
+        [HttpPost()]
         [ProducesResponseType(typeof(AccountOutput), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ICommandResult), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ICommandResult), StatusCodes.Status422UnprocessableEntity)]
@@ -49,12 +49,12 @@ namespace DigitalBrasilCash.API.Controllers
             }
         }
         
-        [HttpGet("account/{name: string}/{tax_id: string}/{created_at: DateTime}")]
+        [HttpGet()]
         [ProducesResponseType(typeof(AccountOutput), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ICommandResult), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ICommandResult), StatusCodes.Status422UnprocessableEntity)]
         [ProducesResponseType(typeof(ICommandResult), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Buscar(string name, string tax_id, DateTime created_at)
+        public async Task<IActionResult> Buscar(string name, string tax_id, DateTime? created_at = null)
         {
             try
             {

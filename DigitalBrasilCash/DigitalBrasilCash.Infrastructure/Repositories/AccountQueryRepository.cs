@@ -29,7 +29,7 @@ namespace DigitalBrasilCash.Infrastructure.Repositories
                         phone_number,
                         created_at,
                         postal_code
-                    FROM ACCOUNT WITH(NOLCOK)
+                    FROM ACCOUNT WITH(NOLOCK)
                     WHERE (@name = '' OR name = @name)
                     AND (@tax_id = '' OR tax_id = @tax_id)
                     AND (@created_at = null OR created_at = @created_at)

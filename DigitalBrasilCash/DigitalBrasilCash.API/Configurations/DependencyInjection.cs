@@ -21,11 +21,12 @@ namespace DigitalBrasilCash.API.Configurations
             ////SERVICES
             //services.AddTransient<ITokenService, TokenService>();
             services.AddTransient<IAccountWriteService, AccountWriteService>();
+            services.AddTransient<IAccountQueryService, AccountQueryService>();
 
             //REPOSITORY
             //services.AddTransient<ITokenRepository, TokenRepository>();
             services.AddTransient<IAccountWriteRepository, AccountWriteRepository>();
-            //services.AddSingleton<IAccountQueryRepository, AccountQueryRepository>();
+            services.AddTransient<IAccountQueryRepository, AccountQueryRepository>();
 
             // VALIDATORS
             services.AddTransient<AccountInputValidate, AccountInputValidate>();

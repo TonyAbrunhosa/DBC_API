@@ -1,13 +1,13 @@
-﻿using DigitalBrasilCash.Domain.Command;
+﻿using DigitalBrasilCash.Domain.Accounts.Input;
+using DigitalBrasilCash.Domain.Accounts.Validation;
+using DigitalBrasilCash.Domain.Command;
 using DigitalBrasilCash.Domain.Contracts.Command;
 using DigitalBrasilCash.Domain.Contracts.Repositories;
 using DigitalBrasilCash.Domain.Contracts.Services;
 using DigitalBrasilCash.Domain.ViaCep;
 using DigitalBrasilCash.Shared.Communication;
+using DigitalBrasilCash.Shared.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DigitalBrasilCash.Application.Services
@@ -15,14 +15,20 @@ namespace DigitalBrasilCash.Application.Services
     public class AccountQueryService : IAccountQueryService
     {
         private readonly IAccountQueryRepository _queryRepository;
+        private readonly AccountInputQueryValidate _inputValidate;
 
-        public AccountQueryService(IAccountQueryRepository queryRepository)
+        public AccountQueryService(IAccountQueryRepository queryRepository, AccountInputQueryValidate inputValidate)
         {
             _queryRepository = queryRepository;
+            _inputValidate = inputValidate;
         }
 
         public async Task<ICommandResult> Buscar(string name, string tax_id, DateTime? created_at)
         {
+            var retorno = _inputValidate.Validate(new AccountInput { name = name, tax_id = tax_id });
+            if (!retorno.IsValid)
+                return new CommandResult(false, "Atenção", ReturnErrors.CreateObjetError(retorno.Errors));
+
             var lstAccounts = await _queryRepository.Buscar(name, tax_id, created_at);
 
             foreach (var acc in lstAccounts)
