@@ -1,5 +1,7 @@
 # DBC_API
 
+> Neste projeto você poderá cadastrar novos usuarios e fazer pesquisa refinadas de todos os usuarios cadastrados.
+
 
 ## 💻 Pré-requisitos
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
