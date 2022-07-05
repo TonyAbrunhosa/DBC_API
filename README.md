@@ -3,7 +3,7 @@
 
 ## 💻 Pré-requisitos
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
-* Instalar o Sql Server Express LocalDB.
+* Instalar o Sql Server Express LocalDB => https://docs.microsoft.com/pt-br/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-ver16
 * Executar o script no Management Studio.
 
 CREATE DATABASE BrasilCashDB
