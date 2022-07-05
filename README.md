@@ -2,6 +2,7 @@
 
 > Neste projeto você poderá cadastrar novos usuarios e fazer pesquisa refinadas de todos os usuarios cadastrados.
 
+![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
 
 ## 💻 Pré-requisitos
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
